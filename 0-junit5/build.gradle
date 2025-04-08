@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.markruler'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+def junitVersion = '5.10.1'
+def assertjVersion = '3.27.3'
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
+
+    // https://assertj.github.io/doc/
+    testImplementation "org.assertj:assertj-core:${assertjVersion}"
+}
+
+test {
+    useJUnitPlatform {
+        excludeTags 'slow'
+    }
+}
+
+tasks.register("integrationTest", Test) {
+    description = 'Runs the integration tests.'
+    group = 'verification'
+
+    useJUnitPlatform {
+        includeTags 'slow'
+    }
+
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+}
