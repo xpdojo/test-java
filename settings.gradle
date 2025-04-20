@@ -1,0 +1,3 @@
+rootProject.name = 'test-java'
+
+include '0-junit5'

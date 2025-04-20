@@ -18,10 +18,14 @@ def junitVersion = '5.10.1'
 def assertjVersion = '3.27.3'
 
 dependencies {
-    testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    implementation 'commons-io:commons-io:2.19.0'
 
+    // JUnit 5
+    testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
     // https://assertj.github.io/doc/
     testImplementation "org.assertj:assertj-core:${assertjVersion}"
+
 }
 
 test {
@@ -30,8 +34,8 @@ test {
     }
 }
 
-tasks.register("integrationTest", Test) {
-    description = 'Runs the integration tests.'
+tasks.register("slowTest", Test) {
+    description = 'Runs the slow tests.'
     group = 'verification'
 
     useJUnitPlatform {
