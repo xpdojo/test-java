@@ -15,4 +15,24 @@ subprojects {
 
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
+
+    // ./gradlew test --rerun-tasks -i
+    test {
+        useJUnitPlatform {
+            excludeTags 'slow'
+        }
+    }
+
+    // ./gradlew slowTest --rerun-tasks -i
+    tasks.register("slowTest", Test) {
+        description = 'Runs the slow tests.'
+        group = 'verification'
+
+        useJUnitPlatform {
+            includeTags 'slow'
+        }
+
+        testClassesDirs = sourceSets.test.output.classesDirs
+        classpath = sourceSets.test.runtimeClasspath
+    }
 }
