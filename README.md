@@ -12,7 +12,7 @@ git switch study
 
 ```shell
 # specify module
-./gradlew :0-junit5:test --rerun-tasks -i
+./gradlew :1-junit5:test --rerun-tasks -i
 ```
 
 ```shell
