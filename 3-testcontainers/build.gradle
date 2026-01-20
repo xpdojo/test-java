@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.markruler'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+def junitVersion = '5.10.1'
+def assertjVersion = '3.27.3'
+def testcontainersVersion = '1.19.8'
+def lettuceVersion = '6.3.2.RELEASE'
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
+    testImplementation "org.assertj:assertj-core:${assertjVersion}"
+    testImplementation "org.testcontainers:testcontainers:${testcontainersVersion}"
+    testImplementation "org.testcontainers:junit-jupiter:${testcontainersVersion}"
+    testImplementation "io.lettuce:lettuce-core:${lettuceVersion}"
+}

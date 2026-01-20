@@ -2,3 +2,4 @@ rootProject.name = 'test-java'
 
 include '1-junit5'
 include '2-spring'
+include '3-testcontainers'

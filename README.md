@@ -26,3 +26,12 @@ git switch study
 ```shell
 ./gradlew slowTest --rerun-tasks --tests="*Test"
 ```
+
+## Testcontainers
+
+- macOS, Windows의 경우 Docker desktop 실행,
+  Linux의 경우 Docker daemon 실행
+
+```sh
+./gradlew :3-testcontainers:test --rerun-tasks -i
+```
